@@ -24,7 +24,7 @@ include'header.php'
 	</div>
 
 	<div align="right">
-		<a class="btn btn-primary btn-sm" href="/kurum/admin">Yönetim Paneli</a>
+		<a class="btn btn-primary btn-sm" href="/admin">Yönetim Paneli</a>
 	</div>
 	<!-- <div id="search_area">
 		<h5>Arama Yap</h5>
