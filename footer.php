@@ -10,7 +10,7 @@
       echo 'Görüntülenme Sayısı: '.$sayac_degeri;
       ?>
       <hr>
-      <span>Copyright &copy; 1954 - <?php echo date("Y"); ?> Erdemli Belediyesi Araştırma ve Geliştirme Müdürlüğü</span>
+      <span>Copyright &copy; <?php echo date("Y"); ?> <a href="https://www.ugurarikan.com.tr">Uğur ARIKAN</a></span>
     </div>
   </div>
 </footer>
