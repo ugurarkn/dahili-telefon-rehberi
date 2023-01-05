@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost:3306
--- Üretim Zamanı: 05 Oca 2023, 11:03:37
--- Sunucu sürümü: 5.7.24
--- PHP Sürümü: 7.2.19
+-- Üretim Zamanı: 05 Oca 2023, 11:22:23
+-- Sunucu sürümü: 8.0.30
+-- PHP Sürümü: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ayarlar` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `site_logo` varchar(400) DEFAULT NULL,
   `site_baslik` varchar(350) DEFAULT NULL,
   `site_aciklama` varchar(300) DEFAULT NULL,
@@ -37,16 +37,16 @@ CREATE TABLE `ayarlar` (
   `site_sahip_mail` varchar(100) DEFAULT NULL,
   `site_mail_host` varchar(100) DEFAULT NULL,
   `site_mail_mail` varchar(100) DEFAULT NULL,
-  `site_mail_port` int(11) DEFAULT NULL,
+  `site_mail_port` int DEFAULT NULL,
   `site_mail_sifre` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `ayarlar`
 --
 
 INSERT INTO `ayarlar` (`id`, `site_logo`, `site_baslik`, `site_aciklama`, `site_duyuru`, `site_link`, `site_sahip_mail`, `site_mail_host`, `site_mail_mail`, `site_mail_port`, `site_mail_sifre`) VALUES
-(1, '298010favicon.png', 'Telefon Rehberi', 'Telefon Rehberi', '<p><strong>DUYURU!</strong> İletişim Bilgilerinizde eksiklik varsa, l&uuml;tfen <strong>3050</strong>, <strong>3051</strong>, <strong>3022</strong> dahili hattı arayınız.</p>\r\n', '', '', NULL, NULL, NULL, NULL);
+(1, '298010favicon.png', 'Telefon Rehberi', 'Telefon Rehberi', '<p><strong>DUYURU!</strong>&nbsp;Duyuru Metniniz buraya gelecek.</p>\r\n', '', '', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ INSERT INTO `ayarlar` (`id`, `site_logo`, `site_baslik`, `site_aciklama`, `site_
 --
 
 CREATE TABLE `kisiler` (
-  `kisi_id` int(11) NOT NULL,
+  `kisi_id` int NOT NULL,
   `kisi_isim` varchar(400) DEFAULT NULL,
   `kisi_dahili` varchar(400) DEFAULT NULL,
   `kisi_cep` varchar(20) DEFAULT NULL,
@@ -63,15 +63,14 @@ CREATE TABLE `kisiler` (
   `kisi_mudurluk` varchar(200) DEFAULT NULL,
   `kisi_meslek` varchar(200) DEFAULT NULL,
   `kisi_detay` mediumtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `kisiler`
 --
 
 INSERT INTO `kisiler` (`kisi_id`, `kisi_isim`, `kisi_dahili`, `kisi_cep`, `kisi_birim`, `kisi_mudurluk`, `kisi_meslek`, `kisi_detay`) VALUES
-(2, 'Örnek Kişi 1', '5010 / 5011', '', 'Sekreter', 'İnsan Kaynakları', 'Müdürlük Sekreteri', ''),
-(216, 'Hasan  ÜZER', '2101', '05', 'Satın Alma', 'Ar-Ge', '', '');
+(1, 'Örnek Kişi 1', '3020', '05555555555', 'İnsan Kaynakları', 'İnsan Kaynakları', 'Sekreter', '');
 
 -- --------------------------------------------------------
 
@@ -80,21 +79,21 @@ INSERT INTO `kisiler` (`kisi_id`, `kisi_isim`, `kisi_dahili`, `kisi_cep`, `kisi_
 --
 
 CREATE TABLE `kullanicilar` (
-  `kul_id` int(11) NOT NULL,
+  `kul_id` int NOT NULL,
   `kul_isim` varchar(200) DEFAULT NULL,
   `kul_mail` varchar(200) DEFAULT NULL,
   `kul_sifre` varchar(100) DEFAULT NULL,
   `kul_telefon` varchar(100) DEFAULT NULL,
-  `kul_yetki` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `kul_yetki` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Tablo döküm verisi `kullanicilar`
 --
 
 INSERT INTO `kullanicilar` (`kul_id`, `kul_isim`, `kul_mail`, `kul_sifre`, `kul_telefon`, `kul_yetki`) VALUES
-(2, 'Yönetici', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', '3022', 1),
-(3, 'Yönetici2', 'admin2@admin.com', 'e10adc3949ba59abbe56e057f20f883e', '3050', 0);
+(1, 'Yönetici', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1),
+(2, 'Editör', 'editor@editor.com', 'e10adc3949ba59abbe56e057f20f883e', '', 0);
 
 -- --------------------------------------------------------
 
@@ -103,11 +102,11 @@ INSERT INTO `kullanicilar` (`kul_id`, `kul_isim`, `kul_mail`, `kul_sifre`, `kul_
 --
 
 CREATE TABLE `mesajlar` (
-  `mesaj_id` int(11) NOT NULL,
-  `mesaj_gonderen` int(11) DEFAULT NULL,
+  `mesaj_id` int NOT NULL,
+  `mesaj_gonderen` int DEFAULT NULL,
   `mesaj_detay` text,
   `mesaj_eklenme_tarih` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -145,25 +144,25 @@ ALTER TABLE `mesajlar`
 -- Tablo için AUTO_INCREMENT değeri `ayarlar`
 --
 ALTER TABLE `ayarlar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kisiler`
 --
 ALTER TABLE `kisiler`
-  MODIFY `kisi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `kisi_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kullanicilar`
 --
 ALTER TABLE `kullanicilar`
-  MODIFY `kul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kul_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `mesajlar`
 --
 ALTER TABLE `mesajlar`
-  MODIFY `mesaj_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mesaj_id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
