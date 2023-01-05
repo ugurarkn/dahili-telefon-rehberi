@@ -15,3 +15,9 @@ K.Adı: admin@admin.com
 
 
 Bazı iyileştirmeler yapıldı.
+
+Ekran Görüntüsü
+
+https://prnt.sc/NgJY4-BICD-e
+
+https://prnt.sc/kW3k2eKmUPIC
